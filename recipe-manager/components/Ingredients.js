@@ -1,10 +1,10 @@
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 
-export default function Ingredients() {
+export default function Ingredients({ navigation }) {
     return (
         <View style={styles.container}>
             <TouchableOpacity 
-            onPress={() => alert('You are now in the Shopping List tab')}
+            onPress={() => navigation.navigate('Shopping List')}
             style={styles.button}>
                 <Text style={styles.buttonTextStyle}>Shopping List</Text>
             </TouchableOpacity>

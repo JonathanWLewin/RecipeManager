@@ -4,6 +4,7 @@ import LandingPage from './components/LandingPage';
 import Ingredients from './components/Ingredients';
 import Settings from './components/Settings';
 import Feedback from './components/Feedback';
+import ShoppingList from './components/ShoppingList'
 
 
 const Stack = createNativeStackNavigator();
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="Ingredients" component={Ingredients} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Feedback" component={Feedback} />
+        <Stack.Screen name="Shopping List" component={ShoppingList} />
       </Stack.Navigator>
   </NavigationContainer>
   );
