@@ -11,7 +11,7 @@ const Drawer = createDrawerNavigator();
 export default function MyDrawer() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Home" component={LandingPage} />
         <Drawer.Screen name="Ingredients" component={Ingredients} />
         <Drawer.Screen name="Settings" component={Settings} />
