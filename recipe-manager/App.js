@@ -1,25 +1,23 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import LandingPage from './components/LandingPage';
 import Ingredients from './components/Ingredients';
 import Settings from './components/Settings';
 import Feedback from './components/Feedback';
 import ShoppingList from './components/ShoppingList'
 
+const Drawer = createDrawerNavigator();
 
-const Stack = createNativeStackNavigator();
-
-
-export default function App() {
+export default function MyDrawer() {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={LandingPage} />
-        <Stack.Screen name="Ingredients" component={Ingredients} />
-        <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Feedback" component={Feedback} />
-        <Stack.Screen name="Shopping List" component={ShoppingList} />
-      </Stack.Navigator>
-  </NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={LandingPage} />
+        <Drawer.Screen name="Ingredients" component={Ingredients} />
+        <Drawer.Screen name="Settings" component={Settings} />
+        <Drawer.Screen name="Feedback" component={Feedback} />
+        <Drawer.Screen name="Shopping List" component={ShoppingList} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }

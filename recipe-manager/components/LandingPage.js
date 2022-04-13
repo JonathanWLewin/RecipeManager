@@ -3,7 +3,7 @@ import logo from '../assets/temp_logo.png';
 import cog from '../assets/settings.jpg';
 import feedback from '../assets/feedback.png';
 
-export default function LandingPage({ navigation }) {
+export default function LandingPage() {
     return (
       <View style={styles.container}>
         <Image source={logo} style={styles.logo}/>

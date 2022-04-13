@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 
-export default function Ingredients({ navigation }) {
+export default function Ingredients() {
     return (
         <View style={styles.container}>
             <TouchableOpacity 
