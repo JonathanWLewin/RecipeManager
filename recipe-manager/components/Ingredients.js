@@ -1,17 +1,18 @@
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { globalStyles } from ".components/Styles";
 
 export default function Ingredients() {
     return (
         <View style={styles.container}>
             <TouchableOpacity 
             onPress={() => navigation.navigate('Shopping List')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Shopping List</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Shopping List</Text>
             </TouchableOpacity>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Pantry tab')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Pantry</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Pantry</Text>
             </TouchableOpacity>
         </View>
     )
@@ -23,13 +24,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    },
-    button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 100,
-    },
-    buttonTextStyle: {
-    color: '#fff',
     },
 })

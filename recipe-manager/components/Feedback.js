@@ -1,4 +1,5 @@
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { globalStyles } from ".components/Styles";
 
 export default function Feedback() {
     return (
@@ -10,8 +11,8 @@ export default function Feedback() {
             </TouchableOpacity>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Donations tab')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Donations</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Donations</Text>
             </TouchableOpacity>
         </View>
     )
@@ -23,13 +24,5 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
-    },
-    button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 100,
-    },
-    buttonTextStyle: {
-    color: '#fff',
     },
 })

@@ -1,14 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import { StyleSheet } from 'react-native'
 
-export default function Styles() {
-  return (
-    <View>
-      <Text>Styles</Text>
-    </View>
-  )
-}
-const styles = StyleSheet.create({
+export const globalStyles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: '#a1a09f',
@@ -78,5 +70,37 @@ const styles = StyleSheet.create({
   },
   itemText:{
       maxWidth: '80%',
+  },
+  button: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 100,
+  },
+  buttonTextStyle: {
+    color: '#fff',
+  },
+  settings: {
+    width: 75,
+    height: 75,
+    alignSelf: 'flex-start',
+  },
+  feedback: {
+    width: 50,
+    height: 50,
+  },
+  mainMenuText: {
+    color: '#ffa500',
+  },
+  bottomview: {
+    flexDirection: 'row',
+    height: '100%',
+    width: '80%',
+    justifyContent: 'space-between',
+    alignSelf: 'flex-end',
+  },
+  logo: {
+    width: 305,
+    height: 159,
+    resizeMode: "contain",
   },
 });

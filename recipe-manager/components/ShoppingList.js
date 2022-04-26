@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
-
+import { globalStyles } from '.components/Styles';
 
 export default function ShoppingList() {
   const [task, setItem] = useState();
@@ -19,16 +19,16 @@ export default function ShoppingList() {
   }
 
   const shoppingItems = (props) => {
-        <View style={styles.item}>
-            <View style={styles.itemLeft}>
-                <View style={styles.square}></View>
-                <Text style={styles.itemText}>{props.text}</Text>
+        <View style={globalStyles.item}>
+            <View style={globalStyles.itemLeft}>
+                <View style={globalStyles.square}></View>
+                <Text style={globalStyles.itemText}>{props.text}</Text>
             </View>
         </View>
   }
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       {/* scroll view to enable scrolling when list gets longer than the page */}
       <ScrollView
         contentContainerStyle={{
@@ -37,9 +37,9 @@ export default function ShoppingList() {
         keyboardShouldPersistTaps='handled'
       >
 
-      <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Shopping Items</Text>
-        <View style={styles.items}>
+      <View style={globalStyles.tasksWrapper}>
+        <Text style={globalStyles.sectionTitle}>Shopping Items</Text>
+        <View style={globalStyles.items}>
           {/* Where Items Appear */}
           {
             taskItems.map((item, index) => {
@@ -61,10 +61,10 @@ export default function ShoppingList() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
       >
-        <TextInput style={styles.input} placeholder={'Add an Item'} value={task} onChangeText={text => setItem(text)} />
+        <TextInput style={globalStyles.input} placeholder={'Add an Item'} value={task} onChangeText={text => setItem(text)} />
         <TouchableOpacity onPress={() => addItem()}>
-          <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+          <View style={globalStyles.addWrapper}>
+            <Text style={globalStyles.addText}>+</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -72,76 +72,3 @@ export default function ShoppingList() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#a1a09f',
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#fbfbf8',
-  },
-  items: {
-    marginTop: 30,
-  },
-  writeTaskWrapper: {
-    position: 'absolute',
-    bottom: 60,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center'
-  },
-  input: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: '#fbfbf8',
-    borderRadius: 60,
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
-    width: 250,
-  },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    backgroundColor: '#fbfbf8',
-    borderRadius: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
-  },
-  addText: {},
-
-  item:{
-    backgroundColor: '#fff',
-    padding: 15,
-    borderRadius: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: 20,
-},
-itemLeft:{
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-},
-square: {
-    width: 24,
-    height: 24,
-    backgroundColor: '#55BCf6',
-    opacity: 0.4,
-    borderRadius: 5,
-    marginRight: 15,
-},
-itemText:{
-    maxWidth: '80%',
-},
-});
