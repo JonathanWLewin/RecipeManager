@@ -1,9 +1,9 @@
-import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
 import { globalStyles } from ".components/Styles";
 
 export default function Ingredients() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.ingredientsContainer}>
             <TouchableOpacity 
             onPress={() => navigation.navigate('Shopping List')}
             style={globalStyles.button}>
@@ -16,13 +16,4 @@ export default function Ingredients() {
             </TouchableOpacity>
         </View>
     )
-}
-
-
-const styles = StyleSheet.create({
-    container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    },
-})
+}ds

@@ -6,7 +6,7 @@ import { globalStyles } from ".components/Styles";
 
 export default function LandingPage() {
     return (
-      <View style={styles.container}>
+      <View style={globalStyles.landingContainer}>
         <Image source={logo} style={globalStyles.logo}/>
         <Text style={globalStyles.mainMenuText}>Upload, share, and shop your recipes</Text>
         <TouchableOpacity
@@ -36,7 +36,7 @@ export default function LandingPage() {
   }
 
 const styles = StyleSheet.create({
-    container: {
+    landingContainer: {
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'center',
