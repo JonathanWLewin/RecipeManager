@@ -9,9 +9,9 @@ export default function Settings() {
                 <Text style={styles.buttonTextStyle}>Notification Manager</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-            onPress={() => alert('You are now in the Sign In/ Sign Up tab')}
+            onPress={() => alert('You are now in the Account Settings tab')}
             style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Sign In/ Sign Up</Text>
+                <Text style={styles.buttonTextStyle}>Account Settings</Text>
             </TouchableOpacity>
         </View>
     )

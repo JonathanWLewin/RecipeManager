@@ -8,28 +8,6 @@ export default function LandingPage() {
       <View style={styles.container}>
         <Image source={logo} style={styles.logo}/>
         <Text style={styles.mainMenuText}>Upload, share, and shop your recipes</Text>
-        <TouchableOpacity
-          onPress={() => alert('You are now in the Recipes tab')}
-          style={styles.button}>
-        <Text style={styles.buttonTextStyle}>Recipes</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Ingredients')}
-          style={styles.button}>
-          <Text style={styles.buttonTextStyle}>Ingredients</Text>
-        </TouchableOpacity>
-        <View style={{flexDirection: 'row'}}>
-          <View style={styles.bottomview}>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Settings')}>
-              <Image source={cog} style={styles.settings}/>
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Feedback')}>
-              <Image source={feedback} style={styles.feedback}/>
-            </TouchableOpacity>
-          </View>
-        </View>
       </View>
     );
   }
@@ -37,7 +15,7 @@ export default function LandingPage() {
 const styles = StyleSheet.create({
     container: {
     flex: 1,
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center',
     },
     logo: {

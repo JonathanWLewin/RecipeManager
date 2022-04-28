@@ -2,24 +2,24 @@ import React from "react";
 import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
-export default function Feedback() {
-
-    const [feedback, onChangeFeedback] = React.useState("");
+export default function Support() {
+    
+    const [donation, onChangeDonation] = React.useState("");
 
     return (
         <View style={styles.container}>
             <TextInput
                 style={styles.input}
-                onChangeText={onChangeFeedback}
-                placeholder="Feedback"
-                value={feedback}
-                onSubmitEditing={() => alert(`Thank you for your feedback - ${feedback} - it's going in the bin.`)}
+                onChangeText={onChangeDonation}
+                placeholder="Donation Amount"
+                value={donation}
+                onSubmitEditing={() => alert(`You are donating $${donation}`)}
                 >
             </TextInput>
             <TouchableOpacity 
-            onPress={() => alert(`Thank you for your feedback - ${feedback} - it's going in the bin.`)}
+            onPress={() => alert(`You are donating $${donation}`)}
             style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Submit</Text>
+                <Text style={styles.buttonTextStyle}>Donate</Text>
             </TouchableOpacity>
         </View>
     )
