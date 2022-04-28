@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import logo from '../assets/temp_logo.png';
 import cog from '../assets/settings.jpg';
 import feedback from '../assets/feedback.png';
-import { globalStyles } from ".components/Styles";
+import { globalStyles } from "./Styles";
 
 export default function LandingPage() {
     return (
@@ -34,11 +34,3 @@ export default function LandingPage() {
       </View>
     );
   }
-
-const styles = StyleSheet.create({
-    landingContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    },
-})

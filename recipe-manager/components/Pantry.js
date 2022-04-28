@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { KeyboardAvoidingView, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
-import { globalStyles } from '.components/Styles';
+import { globalStyles } from './Styles';
 
 
 export default function ShoppingList() {

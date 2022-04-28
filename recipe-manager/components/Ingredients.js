@@ -1,5 +1,5 @@
 import { TouchableOpacity, Text, View } from "react-native";
-import { globalStyles } from ".components/Styles";
+import { globalStyles } from "./Styles";
 
 export default function Ingredients() {
     return (
@@ -16,4 +16,4 @@ export default function Ingredients() {
             </TouchableOpacity>
         </View>
     )
-}ds
+};
