@@ -6,6 +6,7 @@ import Feedback from './components/Feedback';
 import ShoppingList from './components/ShoppingList'
 import Login from './components/Login';
 import Support from './components/Support';
+//import Ingredient from './components/Ingredient';
 
 const Drawer = createDrawerNavigator();
 
@@ -15,7 +16,6 @@ export default function MyDrawer() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Sign-In / Sign-Up" component={Login} />
         <Drawer.Screen name="Home" component={LandingPage} />
-        <Drawer.Screen name="Shopping List" component={ShoppingList} />
         <Drawer.Screen name="Pantry" component={ShoppingList} />
         <Drawer.Screen name="Settings" component={Settings} />
         <Drawer.Screen name="Feedback" component={Feedback} />
