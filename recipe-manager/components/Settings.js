@@ -1,12 +1,13 @@
-import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
+import { globalStyles } from "./Styles";
 
 export default function Settings() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.settingsContainer}>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Notification Manager tab')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Notification Manager</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Notification Manager</Text>
             </TouchableOpacity>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Account Settings tab')}
@@ -16,20 +17,3 @@ export default function Settings() {
         </View>
     )
 }
-
-
-const styles = StyleSheet.create({
-    container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    },
-    button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 100,
-    },
-    buttonTextStyle: {
-    color: '#fff',
-    },
-})

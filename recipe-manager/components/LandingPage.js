@@ -2,6 +2,7 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import logo from '../assets/temp_logo.png';
 import cog from '../assets/settings.jpg';
 import feedback from '../assets/feedback.png';
+import { globalStyles } from "./Styles";
 
 export default function LandingPage() {
     return (

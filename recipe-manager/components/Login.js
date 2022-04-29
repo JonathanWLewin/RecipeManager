@@ -1,8 +1,9 @@
-import { TouchableOpacity, Text, View, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, View } from "react-native";
+import { globalStyles } from "./Styles";
 
 export default function Login() {
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.ingredientsContainer}>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Sign-In tab')}
             style={styles.button}>
@@ -15,21 +16,4 @@ export default function Login() {
             </TouchableOpacity>
         </View>
     )
-}
-
-
-const styles = StyleSheet.create({
-    container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    },
-    button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 100,
-    },
-    buttonTextStyle: {
-    color: '#fff',
-    },
-})
+};

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { KeyboardAvoidingView, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
 import { globalStyles } from './Styles';
 
+
 export default function ShoppingList() {
   const [task, setItem] = useState();
   const [taskItems, setAddItems] = useState([]);
@@ -28,7 +29,7 @@ export default function ShoppingList() {
   }
 
   return (
-    <View style={globalStyles.container}>
+    <View style={styles.container}>
       {/* scroll view to enable scrolling when list gets longer than the page */}
       <ScrollView
         contentContainerStyle={{
@@ -38,7 +39,7 @@ export default function ShoppingList() {
       >
 
       <View style={globalStyles.tasksWrapper}>
-        <Text style={globalStyles.sectionTitle}>Shopping Items</Text>
+        <Text style={globalStyles.sectionTitle}>Pantry Items</Text>
         <View style={globalStyles.items}>
           {/* Where Items Appear */}
           {
