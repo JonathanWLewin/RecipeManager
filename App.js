@@ -8,6 +8,10 @@ import Login from './components/Login';
 import Support from './components/Support';
 //import Ingredient from './components/Ingredient';
 
+import { Amplify } from 'aws-amplify';
+import awsconfig from './src/aws-exports';
+Amplify.configure(awsconfig);
+
 const Drawer = createDrawerNavigator();
 
 export default function MyDrawer() {
