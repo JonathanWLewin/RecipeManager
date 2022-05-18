@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet, TouchableOpacity, TextInput, Button, FlatList } from 'react-native';
+import { TouchableOpacity, TextInput, Button, FlatList } from 'react-native';
 import Ingredient from './Ingredient';
 
 import Colors from '../constants/Colors';
 import { Text, View } from './Themed';
+import { globalStyles } from './Styles';
 
 export default class RecipePage extends Component {
 
@@ -37,24 +38,24 @@ export default class RecipePage extends Component {
   render() {
     return (
       <View>
-        <View style={styles.getStartedContainer}>
+        <View style={globalStyles.getStartedContainer}>
           <Text
-            style={styles.getStartedText}
+            style={globalStyles.getStartedText}
             lightColor="rgba(0,0,0,0.8)"
             darkColor="rgba(255,255,255,0.8)">
             Recipe Title:
           </Text>
           <View>
             <TextInput
-              style={styles.input}
+              style={globalStyles.recipeInput}
               onChangeText={this.handleRecipeTitleInput}
             />
           </View>
         </View>
 
-        <View style={styles.getStartedContainer}>
+        <View style={globalStyles.getStartedContainer}>
           <Text
-            style={styles.getStartedText}
+            style={globalStyles.getStartedText}
             lightColor="rgba(0,0,0,0.8)"
             darkColor="rgba(255,255,255,0.8)">
             Ingredients List:
@@ -65,8 +66,8 @@ export default class RecipePage extends Component {
           <Ingredient RecipePageAddRow = {this.handleIngredientAddRow}></Ingredient>
         </View>
 
-        <TouchableOpacity style={styles.helpLink}>
-            <Text style={styles.helpLinkText} 
+        <TouchableOpacity style={globalStyles.helpLink}>
+            <Text style={globalStyles.helpLinkText} 
               lightColor={Colors.light.tint}
               onPress={this.handleRecipeTitleSubmit}>
                 Submit
@@ -76,41 +77,3 @@ export default class RecipePage extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightContainer: {
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  helpContainer: {
-    marginTop: 15,
-    marginHorizontal: 20,
-    alignItems: 'center',
-  },
-  helpLink: {
-    paddingVertical: 15,
-  },
-  helpLinkText: {
-    textAlign: 'center',
-  },
-  input: {
-    margin: 15,
-    height: 40,
-    width: 300,
-    borderColor: 'white',
-    borderWidth: 1,
-    color:'white',
- },
-});

@@ -1,18 +1,32 @@
 import { StyleSheet } from 'react-native'
 
 export const globalStyles = StyleSheet.create({
+  //global styles
     container: {
       flex: 1,
-      backgroundColor: '#a1a09f',
+      backgroundColor: '#40a6f5', //'#a1a09f',
+      justifyContent: 'space-around',
+      alignItems: 'center',
     },
+    button: {
+      backgroundColor: "#a1a09f",
+      padding: 20,
+      borderRadius: 100,
+    },
+    buttonTextStyle: {
+      color: '#fbfbf8',
+    },
+    logo: {
+      width: 305,
+      height: 159,
+      resizeMode: "contain",
+    },
+
+
+    //page styles
     tasksWrapper: {
       paddingTop: 80,
       paddingHorizontal: 20,
-    },
-    sectionTitle: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      color: '#fbfbf8',
     },
     items: {
       marginTop: 30,
@@ -37,15 +51,13 @@ export const globalStyles = StyleSheet.create({
     addWrapper: {
       width: 60,
       height: 60,
-      backgroundColor: '#fbfbf8',
+      backgroundColor: '#a1a09f',
       borderRadius: 60,
       justifyContent: 'center',
       alignItems: 'center',
       borderColor: '#C0C0C0',
       borderWidth: 1,
-    },
-    addText: {},
-  
+    },  
     item:{
       backgroundColor: '#fff',
       padding: 15,
@@ -71,14 +83,6 @@ export const globalStyles = StyleSheet.create({
   itemText:{
       maxWidth: '80%',
   },
-  button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 100,
-  },
-  buttonTextStyle: {
-    color: '#fff',
-  },
   settings: {
     width: 75,
     height: 75,
@@ -98,29 +102,40 @@ export const globalStyles = StyleSheet.create({
     justifyContent: 'space-between',
     alignSelf: 'flex-end',
   },
-  logo: {
-    width: 305,
-    height: 159,
-    resizeMode: "contain",
-  },
-  feedbackContainer: {
+  regularContainer: {
     flex: 1,
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  ingredientsContainer: {
-    flex: 1,
-    justifyContent: 'space-around',
+  homeScreenFilename: {
+    marginVertical: 7,
+  },
+  codeHighlightContainer: {
+    borderRadius: 3,
+    paddingHorizontal: 4,
+  },
+  getStartedText: {
+    fontSize: 17,
+    lineHeight: 24,
+    textAlign: 'center',
+  },
+  helpContainer: {
+    marginTop: 15,
+    marginHorizontal: 20,
     alignItems: 'center',
   },
-  landingContainer: {
-    flex: 1,
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  helpLink: {
+    paddingVertical: 15,
   },
-  settingsContainer: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
+  helpLinkText: {
+    textAlign: 'center',
   },
+  recipeInput: {
+    margin: 15,
+    height: 40,
+    width: 300,
+    borderColor: 'white',
+    borderWidth: 1,
+    color:'white',
+ },
 });

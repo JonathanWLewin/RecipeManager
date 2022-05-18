@@ -3,7 +3,7 @@ import { globalStyles } from "./Styles";
 
 export default function Settings() {
     return (
-        <View style={globalStyles.settingsContainer}>
+        <View style={globalStyles.container}>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Notification Manager tab')}
             style={globalStyles.button}>
@@ -11,8 +11,8 @@ export default function Settings() {
             </TouchableOpacity>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Account Settings tab')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Account Settings</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Account Settings</Text>
             </TouchableOpacity>
         </View>
     )

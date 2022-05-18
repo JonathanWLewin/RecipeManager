@@ -17,6 +17,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "quantity": {
+                    "name": "quantity",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "UOM": {
                     "name": "UOM",
                     "isArray": false,
@@ -49,9 +56,66 @@ export const schema = {
                     "properties": {}
                 }
             ]
+        },
+        "shoppingItem": {
+            "name": "shoppingItem",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "quantit": {
+                    "name": "quantit",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "UOM": {
+                    "name": "UOM",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "shoppingItems",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
         }
     },
     "enums": {},
     "nonModels": {},
-    "version": "91d03a5220d5de622f18c09526d3b177"
+    "version": "c8eaa47fd71760aa92bbd4c68c32cc02"
 };
