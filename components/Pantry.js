@@ -4,7 +4,7 @@ import { globalStyles } from './Styles';
 import { DataStore } from 'aws-amplify';
 import { shoppingItem } from '../src/models';
 
-export default function ShoppingList() {
+export default function Pantry() {
   const [task, setItem] = useState();
   const [taskItems, setAddItems] = useState([]);
 
@@ -53,7 +53,7 @@ export default function ShoppingList() {
       {/* Adding an Item*/}
       {/* keyboard avoiding view so Keyboard scrolls with items */}
       <KeyboardAvoidingView 
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        //behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={globalStyles.writeTaskWrapper}
       >
         <TextInput style={globalStyles.input} placeholder={'Add an Item'} value={task} onChangeText={text => setItem(text)} />

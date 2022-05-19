@@ -16,7 +16,12 @@ type shoppingItem @model {
   UOM: String
 }
 
-
+type recipe @model {
+  id: ID!
+  name: String!
+  ingredients: [ingredient!]!
+  tags: [String]
+}
 
 #unit: 1
 #Unit of measure: cups

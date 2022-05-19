@@ -8,11 +8,15 @@ import Login from './components/Login';
 import Support from './components/Support';
 //import Ingredient from './components/Ingredient';
 
+import { withAuthenticator } from 'aws-amplify-react-native'
+
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 Amplify.configure(awsconfig);
 
 const Drawer = createDrawerNavigator();
+
+//export default withAuthenticator(MyDrawer);
 
 export default function MyDrawer() {
   return (
