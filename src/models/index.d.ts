@@ -41,6 +41,7 @@ export declare class shoppingItem {
 export declare class recipe {
   readonly id: string;
   readonly name: string;
+  readonly steps: string[];
   readonly tags?: (string | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;

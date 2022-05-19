@@ -151,6 +151,7 @@ export const getRecipe = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
+      steps
       tags
       createdAt
       updatedAt
@@ -181,6 +182,7 @@ export const listRecipes = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
+        steps
         tags
         createdAt
         updatedAt
@@ -220,6 +222,7 @@ export const syncRecipes = /* GraphQL */ `
           _deleted
           _lastChangedAt
         }
+        steps
         tags
         createdAt
         updatedAt

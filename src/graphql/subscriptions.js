@@ -107,6 +107,7 @@ export const onCreateRecipe = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
+      steps
       tags
       createdAt
       updatedAt
@@ -132,6 +133,7 @@ export const onUpdateRecipe = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
+      steps
       tags
       createdAt
       updatedAt
@@ -157,6 +159,7 @@ export const onDeleteRecipe = /* GraphQL */ `
         _deleted
         _lastChangedAt
       }
+      steps
       tags
       createdAt
       updatedAt

@@ -131,6 +131,14 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "steps": {
+                    "name": "steps",
+                    "isArray": true,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": [],
+                    "isArrayNullable": false
+                },
                 "tags": {
                     "name": "tags",
                     "isArray": true,
@@ -168,5 +176,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "6cb012c73b7cd53495951cdfefad450e"
+    "version": "6681c5ecacd1d2339626725af4a468df"
 };

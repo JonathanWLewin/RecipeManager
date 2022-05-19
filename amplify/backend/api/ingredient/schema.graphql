@@ -20,6 +20,7 @@ type recipe @model {
   id: ID!
   name: String!
   ingredients: [ingredient!]!
+  steps: [String!]!
   tags: [String]
 }
 
