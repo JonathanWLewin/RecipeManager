@@ -18,15 +18,6 @@ export default function ShoppingList() {
     setAddItems(itemsCopy)
   }
 
-  const shoppingItems = (props) => {
-        <View style={globalStyles.item}>
-            <View style={globalStyles.itemLeft}>
-                <View style={globalStyles.square}></View>
-                <Text style={globalStyles.itemText}>{props.text}</Text>
-            </View>
-        </View>
-  }
-
   return (
     <View style={globalStyles.container}>
       {/* scroll view to enable scrolling when list gets longer than the page */}

@@ -5,5 +5,27 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 type ingredient @model {
   id: ID!
   name: String!
+  quantity: Float!
   UOM: String
 }
+
+type shoppingItem @model {
+  id: ID!
+  name: String!
+  quantit: Float!
+  UOM: String
+}
+
+type recipe @model {
+  id: ID!
+  name: String!
+  ingredients: [ingredient!]!
+  tags: [String]
+}
+
+#unit: 1
+#Unit of measure: cups
+#                 teaspoons
+#                 tablespoons
+#                 pounds
+#                 oz

@@ -18,16 +18,16 @@ import { ingredient } from '../src/models/index'
 
 export default function LandingPage() {
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <TouchableOpacity 
         onPress={() => AddRecipe() }
-        style={styles.button}>
-        <Text style={styles.buttonTextStyle}>Add Ingredient</Text>
+        style={globalStyles.button}>
+        <Text style={globalStyles.buttonTextStyle}>Add Ingredient</Text>
       </TouchableOpacity>
       <TouchableOpacity 
         onPress={() => ViewIngredient() }
-        style={styles.button}>
-        <Text style={styles.buttonTextStyle}>View Ingredient</Text>
+        style={globalStyles.button}>
+        <Text style={globalStyles.buttonTextStyle}>View Ingredient</Text>
       </TouchableOpacity>
     </View>
   );
@@ -55,43 +55,3 @@ async function ViewIngredient () {
   }
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    },
-    logo: {
-    width: 305,
-    height: 159,
-    resizeMode: "contain",
-    },
-    mainMenuText: {
-    color: '#ffa500',
-    },
-    button: {
-    backgroundColor: "blue",
-    padding: 20,
-    borderRadius: 100,
-    },
-    buttonTextStyle: {
-    color: '#fff',
-    },
-    bottomview: {
-    flexDirection: 'row',
-    height: '100%',
-    width: '80%',
-    justifyContent: 'space-between',
-    alignSelf: 'flex-end',
-    },
-    settings: {
-    width: 75,
-    height: 75,
-    alignSelf: 'flex-start',
-    },
-    feedback: {
-    width: 50,
-    height: 50,
-    },
-})

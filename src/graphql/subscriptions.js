@@ -6,6 +6,7 @@ export const onCreateIngredient = /* GraphQL */ `
     onCreateIngredient {
       id
       name
+      quantity
       UOM
       createdAt
       updatedAt
@@ -20,6 +21,7 @@ export const onUpdateIngredient = /* GraphQL */ `
     onUpdateIngredient {
       id
       name
+      quantity
       UOM
       createdAt
       updatedAt
@@ -34,7 +36,128 @@ export const onDeleteIngredient = /* GraphQL */ `
     onDeleteIngredient {
       id
       name
+      quantity
       UOM
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateShoppingItem = /* GraphQL */ `
+  subscription OnCreateShoppingItem {
+    onCreateShoppingItem {
+      id
+      name
+      quantit
+      UOM
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateShoppingItem = /* GraphQL */ `
+  subscription OnUpdateShoppingItem {
+    onUpdateShoppingItem {
+      id
+      name
+      quantit
+      UOM
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteShoppingItem = /* GraphQL */ `
+  subscription OnDeleteShoppingItem {
+    onDeleteShoppingItem {
+      id
+      name
+      quantit
+      UOM
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onCreateRecipe = /* GraphQL */ `
+  subscription OnCreateRecipe {
+    onCreateRecipe {
+      id
+      name
+      ingredients {
+        id
+        name
+        quantity
+        UOM
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onUpdateRecipe = /* GraphQL */ `
+  subscription OnUpdateRecipe {
+    onUpdateRecipe {
+      id
+      name
+      ingredients {
+        id
+        name
+        quantity
+        UOM
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      tags
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const onDeleteRecipe = /* GraphQL */ `
+  subscription OnDeleteRecipe {
+    onDeleteRecipe {
+      id
+      name
+      ingredients {
+        id
+        name
+        quantity
+        UOM
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      tags
       createdAt
       updatedAt
       _version

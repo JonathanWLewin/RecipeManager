@@ -10,6 +10,11 @@
       "StackName": "amplify-recipemanager-dev-205953",
       "StackId": "arn:aws:cloudformation:us-east-2:806126716772:stack/amplify-recipemanager-dev-205953/39255010-cce0-11ec-a794-0a6cf2ed2386",
       "AmplifyAppId": "d16i2ytnrton7v"
+    },
+    "categories": {
+      "auth": {
+        "recipemanager4c6dd290": {}
+      }
     }
   }
 }

@@ -3,16 +3,16 @@ import { globalStyles } from "./Styles";
 
 export default function Login() {
     return (
-        <View style={globalStyles.ingredientsContainer}>
+        <View style={globalStyles.container}>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Sign-In tab')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Sign-In</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Sign-In</Text>
             </TouchableOpacity>
             <TouchableOpacity 
             onPress={() => alert('You are now in the Sign-Up tab')}
-            style={styles.button}>
-                <Text style={styles.buttonTextStyle}>Sign-Up</Text>
+            style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Sign-Up</Text>
             </TouchableOpacity>
         </View>
     )
