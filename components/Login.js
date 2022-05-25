@@ -1,19 +1,111 @@
-import { TouchableOpacity, Text, View } from "react-native";
+import { TouchableOpacity, Text, View, TextInput } from "react-native";
 import { globalStyles } from "./Styles";
+import React, { useState } from 'react';
 
-export default function Login() {
+//Amplify
+import { Auth } from "aws-amplify";
+
+
+
+const Login = () => {
+    return <CallSignInSignUp></CallSignInSignUp>
+};
+
+async function SignOut() {
+    try {
+        await Auth.signOut();
+    }
+    catch(error) {
+        console.log('Error signing out: ', error);
+    }
+}
+
+async function SignIn(username, password) {
+    try {
+        const user = await Auth.signIn(username, password);
+        console.log('Successfully Signed in');
+    } catch (error) {
+        console.log('error signing in', error);
+    }
+}
+
+async function CheckIfUserIsAuthenticated() {
+    try {
+        var user = await Auth.currentAuthenticatedUser({
+            bypassCache: true
+        })
+        console.log('User: ', user);
+        return true;
+    }
+    catch(error) {
+        console.log('User is not authenticated');
+        return false;
+    }
+}
+
+const CallSignInSignUp = (props) => {
+    const [isSignedIn, setIsSignedIn] = useState(false);
+
+    CheckIfUserIsAuthenticated().then(response => {
+        setIsSignedIn(response);
+    });
+
+    console.log(isSignedIn);
+    if (isSignedIn) {
+        return (
+            <UserSignedIn></UserSignedIn>
+        )
+    }
+    else {
+        return (
+            <UserNotSignedIn></UserNotSignedIn>
+        )
+    }
+}
+
+const UserSignedIn = (props) => {
     return (
         <View style={globalStyles.container}>
             <TouchableOpacity 
-            onPress={() => alert('You are now in the Sign-In tab')}
-            style={globalStyles.button}>
+                onPress={() => SignOut()}
+                style={globalStyles.button}>
+                <Text style={globalStyles.buttonTextStyle}>Sign-Out</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+
+const UserNotSignedIn = (props) => {
+    const [username, onChangeUsername] = useState("");
+    const [password, onChangePassword] = useState("");
+    return (
+        <View style={globalStyles.container}>
+            <TextInput
+                style={globalStyles.input}
+                onChangeText={onChangeUsername}
+                placeholder="Username"
+                value={username}
+                onSubmitEditing={() => SignIn(username, password)}
+            ></TextInput>
+            <TextInput
+                style={globalStyles.input}
+                onChangeText={onChangePassword}
+                placeholder="Password"
+                value={password}
+                onSubmitEditing={() => SignIn(username, password)}
+            ></TextInput>
+            <TouchableOpacity 
+                onPress={() => SignIn(username, password)}
+                style={globalStyles.button}>
                 <Text style={globalStyles.buttonTextStyle}>Sign-In</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-            onPress={() => alert('You are now in the Sign-Up tab')}
-            style={globalStyles.button}>
+                onPress={() => SignOut()}
+                style={globalStyles.button}>
                 <Text style={globalStyles.buttonTextStyle}>Sign-Up</Text>
             </TouchableOpacity>
         </View>
     )
-};
+}
+
+export default Login;

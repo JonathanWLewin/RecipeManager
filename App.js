@@ -17,12 +17,13 @@ Amplify.configure(awsconfig);
 const Drawer = createDrawerNavigator();
 
 //export default withAuthenticator(MyDrawer);
+//function MyDrawer() {
 
 export default function MyDrawer() {
   return (
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
-        <Drawer.Screen name="Sign-In / Sign-Up" component={Login} />
+        <Drawer.Screen name="Profile" component={Login} />
         <Drawer.Screen name="Home" component={LandingPage} />
         <Drawer.Screen name="Pantry" component={Pantry} />
         <Drawer.Screen name="Settings" component={Settings} />
