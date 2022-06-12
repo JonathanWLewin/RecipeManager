@@ -6,6 +6,7 @@ import Feedback from './components/Feedback';
 import Pantry from './components/Pantry';
 import Login from './components/Login';
 import Support from './components/Support';
+import RecipePage from './components/RecipePage';
 //import Ingredient from './components/Ingredient';
 
 import { withAuthenticator } from 'aws-amplify-react-native'
@@ -22,7 +23,8 @@ const Drawer = createDrawerNavigator();
 export default function MyDrawer() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home">
+      <Drawer.Navigator initialRouteName="Recipes">
+        <Drawer.Screen name="Recipes" component={RecipePage} />
         <Drawer.Screen name="Profile" component={Login} />
         <Drawer.Screen name="Home" component={LandingPage} />
         <Drawer.Screen name="Pantry" component={Pantry} />

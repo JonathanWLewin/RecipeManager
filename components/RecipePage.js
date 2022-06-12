@@ -1,30 +1,40 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, TextInput, Button, FlatList } from 'react-native';
+import { TouchableOpacity, TextInput, Button, FlatList, Text, View } from 'react-native';
 import Ingredient from './Ingredient';
-
-import Colors from '../constants/Colors';
-import { Text, View } from './Themed';
 import { globalStyles } from './Styles';
+
+//Amplify
+import { recipe } from '../src/models';
 
 export default class RecipePage extends Component {
 
     state = {
       instructionsList: [],
       recipeTitle: '',
-      recipeInput: '',
     }
 
   handleRecipeTitleInput = (text) => {
     if (!text) {
-      this.setState({recipeInput: ''})
+      this.setState({recipeTitle: ''})
     } else {
-      this.setState({recipeInput: text })
+      this.setState({recipeTitle: text })
     }
   }
 
   handleIngredientAddRow = (name, quantity, measurement) => {
 
-    alert('The ingredient is: ' + name + ' , you\'ll need ' + quantity + ' of them, at this measurement: ' + measurement);
+    this.setState(state => {
+      const list = this.state.instructionsList.concat({
+        'name': name,
+        'quantity': quantity,
+        'unit': measurement
+      })
+
+      return {
+        instructionsList: list,
+        recipeTitle: this.state.recipeTitle
+      }
+    })
   }
 
   handleRecipeTitleSubmit = () => {
@@ -38,19 +48,14 @@ export default class RecipePage extends Component {
   render() {
     return (
       <View>
-        <View style={globalStyles.getStartedContainer}>
-          <Text
-            style={globalStyles.getStartedText}
-            lightColor="rgba(0,0,0,0.8)"
-            darkColor="rgba(255,255,255,0.8)">
-            Recipe Title:
-          </Text>
-          <View>
-            <TextInput
-              style={globalStyles.recipeInput}
-              onChangeText={this.handleRecipeTitleInput}
-            />
-          </View>
+        <View>
+        <TextInput
+            style={globalStyles.recipeInput}
+            onChangeText={this.handleRecipeTitleInput}
+            placeholder="Recipe Name"
+            value={this.state.recipeTitle}
+            >
+        </TextInput>
         </View>
 
         <View style={globalStyles.getStartedContainer}>
@@ -63,12 +68,55 @@ export default class RecipePage extends Component {
         </View>
 
         <View>
-          <Ingredient RecipePageAddRow = {this.handleIngredientAddRow}></Ingredient>
+          <View style={[{
+            justifyContent: 'space-around', 
+            alignItems: 'center',
+          }]}>
+              <View style={[{}, {flexDirection: "row"}]}>
+                <View style={{ flex: 1}}>
+                    <TextInput 
+                      style={globalStyles.IngredientText}
+                      value={"Ingredient"}
+                      >
+                    </TextInput>
+                </View>
+                <View style={{ flex: 1}}>
+                    <TextInput 
+                      style={globalStyles.IngredientText}
+                      value={"Quantity"}
+                      >
+                    </TextInput>
+                </View>
+                <View style={{ flex: 1}}>
+                    <TextInput 
+                      style={globalStyles.IngredientText}
+                      value={"Unit"}
+                      >
+                    </TextInput>
+                </View>
+              </View>
+          </View>
+        </View>
+
+        <View>
+          <FlatList
+            data={this.state.instructionsList}
+            renderItem={({item}) => <Ingredient 
+              RecipePageAddRow = {this.handleIngredientAddRow} 
+              inputIngredient = {false}
+              name = {item.name}
+              quantity = {item.quantity}
+              unit = {item.unit}>
+              </Ingredient>}
+            extraData={this.state}
+          />
+        </View>
+        <View>
+          <Ingredient RecipePageAddRow = {this.handleIngredientAddRow} inputIngredient = {true}></Ingredient>
         </View>
 
         <TouchableOpacity style={globalStyles.helpLink}>
             <Text style={globalStyles.helpLinkText} 
-              lightColor={Colors.light.tint}
               onPress={this.handleRecipeTitleSubmit}>
                 Submit
             </Text>

@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, TouchableOpacity, TextInput, Button, FlatList } from 'react-native';
-
-import Colors from '../constants/Colors';
-import { Text, View } from './Themed';
+import { StyleSheet, TouchableOpacity, TextInput, Button, FlatList, Text, View } from 'react-native';
 
 export default class Ingredient extends React.Component {
 
@@ -19,47 +16,74 @@ export default class Ingredient extends React.Component {
   }
 
   render() {
-    return (
+    if (this.props.inputIngredient) {
+      return (
+          <View style={[styles.IngredientRowContainer, {
+            flexDirection: "row"
+          }]}>
+            <View style={{ flex: 1}}>
+                <Text style={styles.IngredientText}>
+                    Ingredient name:
+                </Text>
+                <TextInput
+                  style={styles.ingredientInput}
+                  onChangeText={this.handleIngredientNameInput}
+                />
+            </View>
+            <View style={{ flex: 1}}>
+                <Text style={styles.IngredientText}>
+                    Quantity:
+                </Text>
+                <TextInput
+                  style={styles.ingredientInput}
+                  onChangeText={this.handleIngredientQuanitityInput}
+                />
+            </View>
+            <View style={{ flex: 1}}>
+                <Text style={styles.IngredientText}>
+                    Unit:
+                </Text>
+                <TextInput
+                  style={styles.ingredientInput}
+                  onChangeText={this.handleIngredientMeasurementInput}
+                />
+            </View>
+            <TouchableOpacity style={styles.helpLink}>
+              <Text style={styles.helpLinkText} 
+                onPress={() => this.props.RecipePageAddRow(this.state.name, this.state.quantity, this.state.measurement)}>
+                  Add another ingredient
+              </Text>
+            </TouchableOpacity>
+          </View>
+        );
+    }
+    else {
+      return (
         <View style={[styles.IngredientRowContainer, {
           flexDirection: "row"
         }]}>
           <View style={{ flex: 1}}>
-              <Text style={styles.IngredientText}>
-                  Ingredient name:
-              </Text>
-              <TextInput
-                style={styles.ingredientInput}
-                onChangeText={this.handleIngredientNameInput}
-              />
+              <TextInput style={styles.IngredientText}
+                value={this.props.name}
+                >
+              </TextInput>
           </View>
           <View style={{ flex: 1}}>
-              <Text style={styles.IngredientText}>
-                  Quantity:
-              </Text>
-              <TextInput
-                style={styles.ingredientInput}
-                onChangeText={this.handleIngredientQuanitityInput}
-              />
+              <TextInput style={styles.IngredientText}
+                  value={this.props.quantity}
+                >
+              </TextInput>
           </View>
           <View style={{ flex: 1}}>
-              <Text style={styles.IngredientText}>
-                  Unit:
-              </Text>
-              <TextInput
-                style={styles.ingredientInput}
-                onChangeText={this.handleIngredientMeasurementInput}
-              />
+              <TextInput style={styles.IngredientText}
+              value={this.props.unit}
+              >
+              </TextInput>
           </View>
-          <TouchableOpacity style={styles.helpLink}>
-            <Text style={styles.helpLinkText} 
-              lightColor={Colors.light.tint}
-              onPress={() => this.props.RecipePageAddRow(this.state.name, this.state.quantity, this.state.measurement)}>
-                Add another ingredient
-            </Text>
-          </TouchableOpacity>
         </View>
       );
-}
+    }
+  }
 }
   
 
@@ -113,7 +137,8 @@ const styles = StyleSheet.create({
     width: 80,
     borderColor: 'white',
     borderWidth: 1,
-    color:'white',
+    color:'black',
+    textAlign: 'center',
     justifyContent:'space-between',
     padding:'100',
  },
