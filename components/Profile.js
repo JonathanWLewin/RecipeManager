@@ -7,13 +7,14 @@ import { Auth } from "aws-amplify";
 
 
 
-const Login = () => {
-    return <CallSignInSignUp></CallSignInSignUp>
+const Profile = ({ navigation }) => {
+    return <CallSignInSignUp navigation = {navigation}></CallSignInSignUp>
 };
 
 async function SignOut() {
     try {
         await Auth.signOut();
+        navigation.navigate('Profile')
     }
     catch(error) {
         console.log('Error signing out: ', error);
@@ -22,7 +23,8 @@ async function SignOut() {
 
 async function SignIn(username, password) {
     try {
-        const user = await Auth.signIn(username, password);
+        await Auth.signIn(username, password);
+        navigation.navigate('Profile')
         console.log('Successfully Signed in');
     } catch (error) {
         console.log('error signing in', error);
@@ -43,6 +45,19 @@ async function CheckIfUserIsAuthenticated() {
     }
 }
 
+async function RetrieveCurrentUser() {
+    try {
+        var user = await Auth.currentAuthenticatedUser({
+            bypassCache: true
+        })
+        return user;
+    }
+    catch(error) {
+        console.log('User is not authenticated');
+        return null;
+    }
+}
+
 const CallSignInSignUp = (props) => {
     const [isSignedIn, setIsSignedIn] = useState(false);
 
@@ -58,7 +73,7 @@ const CallSignInSignUp = (props) => {
     }
     else {
         return (
-            <UserNotSignedIn></UserNotSignedIn>
+            <UserNotSignedIn navigation={props.navigation}></UserNotSignedIn>
         )
     }
 }
@@ -66,6 +81,9 @@ const CallSignInSignUp = (props) => {
 const UserSignedIn = (props) => {
     return (
         <View style={globalStyles.container}>
+            <Text>
+                {props.username}
+            </Text>
             <TouchableOpacity 
                 onPress={() => SignOut()}
                 style={globalStyles.button}>
@@ -95,12 +113,12 @@ const UserNotSignedIn = (props) => {
                 onSubmitEditing={() => SignIn(username, password)}
             ></TextInput>
             <TouchableOpacity 
-                onPress={() => SignIn(username, password)}
+                onPress={() => SignIn(username, password, props.navigation)}
                 style={globalStyles.button}>
                 <Text style={globalStyles.buttonTextStyle}>Sign-In</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-                onPress={() => SignOut()}
+                onPress={() => props.navigation.navigate('Sign Up')}
                 style={globalStyles.button}>
                 <Text style={globalStyles.buttonTextStyle}>Sign-Up</Text>
             </TouchableOpacity>
@@ -108,4 +126,4 @@ const UserNotSignedIn = (props) => {
     )
 }
 
-export default Login;
+export default Profile;

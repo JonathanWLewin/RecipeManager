@@ -22,18 +22,21 @@ export default class Ingredient extends React.Component {
           <View style={globalStyles.RecipeView}>
             <TextInput
               style={styles.ingredientInput}
+              value={this.props.Ingredient}
               onChangeText={this.handleIngredientNameInput}
             />
           </View>
           <View style={globalStyles.RecipeView}>
             <TextInput
               style={styles.ingredientInput}
+              value={this.props.Quantity}
               onChangeText={this.handleIngredientQuanitityInput}
             />
           </View>
           <View style={globalStyles.RecipeView}>
           <TextInput
             style={styles.ingredientInput}
+            value={this.props.Unit}
             onChangeText={this.handleIngredientMeasurementInput}
           />
           </View>
