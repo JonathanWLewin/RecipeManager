@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { StyleSheet, TouchableOpacity, TextInput, Button, FlatList } from 'react-native';
-
-import Colors from '../constants/Colors';
-import { Text, View } from './Themed';
+import { StyleSheet, TouchableOpacity, TextInput, Button, FlatList, Text, View } from 'react-native';
+import { globalStyles } from './Styles';
 
 export default class Ingredient extends React.Component {
 
@@ -20,46 +18,85 @@ export default class Ingredient extends React.Component {
 
   render() {
     return (
+        <View style={globalStyles.RecipeCentered}>
+          <View style={globalStyles.RecipeView}>
+            <TextInput
+              style={styles.ingredientInput}
+              value={this.props.Ingredient}
+              onChangeText={this.handleIngredientNameInput}
+            />
+          </View>
+          <View style={globalStyles.RecipeView}>
+            <TextInput
+              style={styles.ingredientInput}
+              value={this.props.Quantity}
+              onChangeText={this.handleIngredientQuanitityInput}
+            />
+          </View>
+          <View style={globalStyles.RecipeView}>
+          <TextInput
+            style={styles.ingredientInput}
+            value={this.props.Unit}
+            onChangeText={this.handleIngredientMeasurementInput}
+          />
+          </View>
+        </View>
+      );
+  }
+
+
+/*
+  render() {
+    if (this.props.inputIngredient) {
+      return (
+          <View style={globalStyles.RecipeCentered}>
+            <View style={globalStyles.RecipeView} />
+            <View style={globalStyles.RecipeView}>
+              <TextInput
+                style={styles.ingredientInput}
+                onChangeText={this.handleIngredientNameInput}
+              />
+            </View>
+            <View style={globalStyles.RecipeView}>
+              <TextInput
+                style={styles.ingredientInput}
+                onChangeText={this.handleIngredientQuanitityInput}
+              />
+            </View>
+            <View style={globalStyles.RecipeView}>
+            <TextInput
+              style={styles.ingredientInput}
+              onChangeText={this.handleIngredientMeasurementInput}
+            />
+            </View>
+            <View style={globalStyles.RecipeView} />
+          </View>
+        );
+    }
+    else {
+      return (
         <View style={[styles.IngredientRowContainer, {
           flexDirection: "row"
         }]}>
           <View style={{ flex: 1}}>
               <Text style={styles.IngredientText}>
-                  Ingredient name:
+                {this.props.name}
               </Text>
-              <TextInput
-                style={styles.ingredientInput}
-                onChangeText={this.handleIngredientNameInput}
-              />
           </View>
           <View style={{ flex: 1}}>
               <Text style={styles.IngredientText}>
-                  Quantity:
+                {this.props.quantity}
               </Text>
-              <TextInput
-                style={styles.ingredientInput}
-                onChangeText={this.handleIngredientQuanitityInput}
-              />
           </View>
           <View style={{ flex: 1}}>
               <Text style={styles.IngredientText}>
-                  Unit:
+                {this.props.unit}
               </Text>
-              <TextInput
-                style={styles.ingredientInput}
-                onChangeText={this.handleIngredientMeasurementInput}
-              />
           </View>
-          <TouchableOpacity style={styles.helpLink}>
-            <Text style={styles.helpLinkText} 
-              lightColor={Colors.light.tint}
-              onPress={() => this.props.RecipePageAddRow(this.state.name, this.state.quantity, this.state.measurement)}>
-                Add another ingredient
-            </Text>
-          </TouchableOpacity>
         </View>
       );
-}
+    }
+  }*/
 }
   
 
@@ -93,9 +130,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     alignItems: 'center',
   },
-  helpLink: {
-    paddingVertical: 15,
-  },
   helpLinkText: {
     textAlign: 'center',
   },
@@ -108,14 +142,11 @@ const styles = StyleSheet.create({
     color:'white',
  },
  ingredientInput: {
-    margin: 15,
-    height: 40,
-    width: 80,
     borderColor: 'white',
     borderWidth: 1,
-    color:'white',
+    color:'black',
+    textAlign: 'center',
     justifyContent:'space-between',
-    padding:'100',
  },
  container: {
     flex: 1,

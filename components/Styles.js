@@ -136,6 +136,23 @@ export const globalStyles = StyleSheet.create({
     width: 300,
     borderColor: 'white',
     borderWidth: 1,
-    color:'white',
+    color:'black',
+    textAlign: 'center',
+    alignSelf: 'center'
  },
+ IngredientText: {
+  fontSize: 14,
+  lineHeight: 24,
+  textAlign: 'center',
+  },
+
+  //Recipe Page
+  RecipeCentered: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  RecipeView: {
+    flex: 1,
+    alignItems: 'center'
+  }
 });
