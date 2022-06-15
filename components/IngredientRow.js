@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, TouchableOpacity, TextInput, Button, FlatList, Text, View } from 'react-native';
+import { globalStyles } from './Styles';
 
 export default class Ingredient extends React.Component {
 
@@ -16,44 +17,56 @@ export default class Ingredient extends React.Component {
   }
 
   render() {
+    return (
+        <View style={globalStyles.RecipeCentered}>
+          <View style={globalStyles.RecipeView}>
+            <TextInput
+              style={styles.ingredientInput}
+              onChangeText={this.handleIngredientNameInput}
+            />
+          </View>
+          <View style={globalStyles.RecipeView}>
+            <TextInput
+              style={styles.ingredientInput}
+              onChangeText={this.handleIngredientQuanitityInput}
+            />
+          </View>
+          <View style={globalStyles.RecipeView}>
+          <TextInput
+            style={styles.ingredientInput}
+            onChangeText={this.handleIngredientMeasurementInput}
+          />
+          </View>
+        </View>
+      );
+  }
+
+
+/*
+  render() {
     if (this.props.inputIngredient) {
       return (
-          <View style={[styles.IngredientRowContainer, {
-            flexDirection: "row"
-          }]}>
-            <View style={{ flex: 1}}>
-                <Text style={styles.IngredientText}>
-                    Ingredient name:
-                </Text>
-                <TextInput
-                  style={styles.ingredientInput}
-                  onChangeText={this.handleIngredientNameInput}
-                />
+          <View style={globalStyles.RecipeCentered}>
+            <View style={globalStyles.RecipeView} />
+            <View style={globalStyles.RecipeView}>
+              <TextInput
+                style={styles.ingredientInput}
+                onChangeText={this.handleIngredientNameInput}
+              />
             </View>
-            <View style={{ flex: 1}}>
-                <Text style={styles.IngredientText}>
-                    Quantity:
-                </Text>
-                <TextInput
-                  style={styles.ingredientInput}
-                  onChangeText={this.handleIngredientQuanitityInput}
-                />
+            <View style={globalStyles.RecipeView}>
+              <TextInput
+                style={styles.ingredientInput}
+                onChangeText={this.handleIngredientQuanitityInput}
+              />
             </View>
-            <View style={{ flex: 1}}>
-                <Text style={styles.IngredientText}>
-                    Unit:
-                </Text>
-                <TextInput
-                  style={styles.ingredientInput}
-                  onChangeText={this.handleIngredientMeasurementInput}
-                />
+            <View style={globalStyles.RecipeView}>
+            <TextInput
+              style={styles.ingredientInput}
+              onChangeText={this.handleIngredientMeasurementInput}
+            />
             </View>
-            <TouchableOpacity style={styles.helpLink}>
-              <Text style={styles.helpLinkText} 
-                onPress={() => this.props.RecipePageAddRow(this.state.name, this.state.quantity, this.state.measurement)}>
-                  Add another ingredient
-              </Text>
-            </TouchableOpacity>
+            <View style={globalStyles.RecipeView} />
           </View>
         );
     }
@@ -63,27 +76,24 @@ export default class Ingredient extends React.Component {
           flexDirection: "row"
         }]}>
           <View style={{ flex: 1}}>
-              <TextInput style={styles.IngredientText}
-                value={this.props.name}
-                >
-              </TextInput>
+              <Text style={styles.IngredientText}>
+                {this.props.name}
+              </Text>
           </View>
           <View style={{ flex: 1}}>
-              <TextInput style={styles.IngredientText}
-                  value={this.props.quantity}
-                >
-              </TextInput>
+              <Text style={styles.IngredientText}>
+                {this.props.quantity}
+              </Text>
           </View>
           <View style={{ flex: 1}}>
-              <TextInput style={styles.IngredientText}
-              value={this.props.unit}
-              >
-              </TextInput>
+              <Text style={styles.IngredientText}>
+                {this.props.unit}
+              </Text>
           </View>
         </View>
       );
     }
-  }
+  }*/
 }
   
 
@@ -117,9 +127,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     alignItems: 'center',
   },
-  helpLink: {
-    paddingVertical: 15,
-  },
   helpLinkText: {
     textAlign: 'center',
   },
@@ -132,15 +139,11 @@ const styles = StyleSheet.create({
     color:'white',
  },
  ingredientInput: {
-    margin: 15,
-    height: 40,
-    width: 80,
     borderColor: 'white',
     borderWidth: 1,
     color:'black',
     textAlign: 'center',
     justifyContent:'space-between',
-    padding:'100',
  },
  container: {
     flex: 1,

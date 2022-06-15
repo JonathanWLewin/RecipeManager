@@ -144,5 +144,15 @@ export const globalStyles = StyleSheet.create({
   fontSize: 14,
   lineHeight: 24,
   textAlign: 'center',
-},
+  },
+
+  //Recipe Page
+  RecipeCentered: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  RecipeView: {
+    flex: 1,
+    alignItems: 'center'
+  }
 });
