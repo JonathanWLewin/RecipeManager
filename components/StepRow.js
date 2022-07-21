@@ -4,6 +4,10 @@ import { globalStyles } from './Styles';
 
 export default class StepRow extends React.Component {
 
+  StepUpdate = (text) => {
+    this.props.handleStepUpdate(text, this.props.id);
+  }
+
   render() {
     return (
         <View style={globalStyles.RecipeCentered}>
@@ -11,7 +15,7 @@ export default class StepRow extends React.Component {
             <TextInput
               style={styles.ingredientInput}
               value={this.props.name}
-              onChangeText={this.props.handleStepUpdate}
+              onChangeText={this.StepUpdate}
             />
           </View>
         </View>

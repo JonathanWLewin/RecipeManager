@@ -13,16 +13,20 @@ export default class RecipePage extends Component {
 
     state = {
       recipeTitle: '',
-      instructionsList: [],
-      currentIngredient: {
+      instructionsList: [{
+        'id': 0,
         'name': '',
         'quantity': '',
         'unit': '',
-      },
-      stepList: [],
-      currentStep: '',
-      tagList: [],
-      currentTag: ''
+      }],
+      stepList: [{
+        'id' : 0,
+        'value': ''
+      }],
+      tagList: [{
+        'id' : 0,
+        'value': ''
+      }],
     }
 
   handleRecipeTitleInput = (text) => {
@@ -38,96 +42,96 @@ export default class RecipePage extends Component {
     this.setState(state => {
       const list = this.state.instructionsList.concat({
         'id': this.state.instructionsList.length,
-        'name': this.state.currentIngredient.name,
-        'quantity': this.state.currentIngredient.quantity,
-        'unit': this.state.currentIngredient.unit
+        'name': '',
+        'quantity': '',
+        'unit': ''
       })
 
       return {
         instructionsList: list,
-        recipeTitle: this.state.recipeTitle,
-        currentIngredient: {
-          'id': this.state.instructionsList.length,
-          'name': '',
-          'quantity': '',
-          'unit': '',
-        },
-        stepList: this.state.stepList,
-        currentStep: this.state.currentStep,
-        tagList: this.state.tagList,
-        currentTag: this.state.currentTag
     }})
   }
 
   handleStepAddRow = () => {
     this.setState(state => {
-      const list = this.state.stepList.concat(this.state.currentStep)
+      const list = this.state.stepList.concat({
+        'id' : this.state.stepList.length,
+        'value': ''
+      })
       return {
-        instructionsList: this.state.instructionsList,
-        recipeTitle: this.state.recipeTitle,
-        currentIngredient: this.state.currentIngredient,
-        stepList: list,
-        currentStep: '',
-        tagList: this.state.tagList,
-        currentTag: this.state.currentTag
+        stepList: list
       }
     })
   }
 
   handleTagAddRow = () => {
     this.setState(state => {
-      const list = this.state.tagList.concat(this.state.currentTag)
+      const list = this.state.tagList.concat({
+        'id' : this.state.tagList.length,
+        'value': ''
+      })
       return {
-        instructionsList: this.state.instructionsList,
-        recipeTitle: this.state.recipeTitle,
-        currentIngredient: this.state.currentIngredient,
-        stepList: this.state.stepList,
-        currentStep: this.state.currentStep,
-        tagList: list,
-        currentTag: ''
+        tagList: list
       }
     })
   }
 
-  handleIngredientNameInput = (text) => {
+  handleIngredientNameInput = (text, id) => {
 
-    this.setState({currentIngredient: 
-      {
-        name: text,
-        quantity: this.state.currentIngredient.quantity,
-        unit: this.state.currentIngredient.unit
+    this.setState(state => {
+      const list = this.state.instructionsList;
+      list[id].name = text;
+
+      return {
+        instructionsList: list
       }
-    });
+    })
   }
 
-  handleIngredientQuanitityInput = (text) => {
+  handleIngredientQuanitityInput = (text, id) => {
 
-    this.setState({currentIngredient: 
-      {
-        name: this.state.currentIngredient.name,
-        quantity: text,
-        unit: this.state.currentIngredient.unit
+    this.setState(state => {
+      const list = this.state.instructionsList;
+      list[id].quantity = text;
+
+      return {
+        instructionsList: list
       }
-    });
+    })
   }
 
-  handleIngredientMeasurementInput = (text) => {
+  handleIngredientMeasurementInput = (text, id) => {
 
-    this.setState({currentIngredient: 
-      {
-        name: this.state.currentIngredient.name,
-        quantity: this.state.currentIngredient.quantity,
-        unit: text
+    this.setState(state => {
+      const list = this.state.instructionsList;
+      list[id].unit = text;
+
+      return {
+        instructionsList: list
       }
-    });
+    })
   }
 
-  handleStepUpdate = (text) => {
-    this.setState({currentStep: text})
+  handleStepUpdate = (text, id) => {
+    this.setState(state => {
+      const list = this.state.stepList;
+      list[id].value = text;
+
+      return {
+        stepList: list
+      }
+    })
   }
 
-  handleTagUpdate = (text) => {
-    this.setState({currentTag: text})
+  handleTagUpdate = (text, id) => {
+    this.setState(state => {
+      const list = this.state.tagList;
+      list[id].value = text;
+
+      return {
+        tagList: list
+      }
+    })
   }
 
   async handleRecipeSubmit() {
@@ -141,11 +145,21 @@ export default class RecipePage extends Component {
         }))
       });
 
+      let stepList = []
+      this.state.stepList.forEach(element => {
+        stepList.push(element.value)
+      })
+
+      let tagList = []
+      this.state.tagList.forEach(element => {
+        tagList.push(element.value)
+      })
+
       let recipeToSave = new recipe({
         name: this.state.recipeTitle,
         ingredients: ingredientList,
-        steps: this.state.stepList,
-        tags: this.state.tagList
+        steps: stepList,
+        tags: tagList
       })
       console.log(recipeToSave);
       await DataStore.save(recipeToSave);
@@ -153,15 +167,24 @@ export default class RecipePage extends Component {
     } catch (error) {
       console.log("Error saving ingredient", error);
     }
-  }
-
-  async ViewRecipe () {
-    try {
-      const recipes = await DataStore.query(recipe);
-      console.log("Recipes retrieved successfully!", JSON.stringify(recipes, null, 2));
-    } catch (error) {
-      console.log("Error retrieving recipes", error);
-    }
+    this.setState({
+      recipeTitle: '',
+      instructionsList: [{
+        'id': 0,
+        'name': '',
+        'quantity': '',
+        'unit': '',
+      }],
+      stepList: [{
+        'id' : 0,
+        'value': ''
+      }],
+      tagList: [{
+        'id' : 0,
+        'value': ''
+      }],
+    })
+    this.props.navigation.navigate('View Recipes')
   }
 
   render() {
@@ -206,25 +229,17 @@ export default class RecipePage extends Component {
 
         <FlatList
           data={this.state.instructionsList}
-          keyExtractor={(item) => item.key}
           renderItem={({item}) => <IngredientRow 
-            inputIngredient = {false}
+            handleIngredientNameInput = {this.handleIngredientNameInput}
+            handleIngredientQuanitityInput = {this.handleIngredientQuanitityInput}
+            handleIngredientMeasurementInput = {this.handleIngredientMeasurementInput}
+            id = {item.id}
             name = {item.name}
             quantity = {item.quantity}
             unit = {item.unit}>
             </IngredientRow>}
           extraData={this.state}
         />
-        <IngredientRow 
-          handleIngredientNameInput = {this.handleIngredientNameInput}
-          handleIngredientQuanitityInput = {this.handleIngredientQuanitityInput}
-          handleIngredientMeasurementInput = {this.handleIngredientMeasurementInput}
-          name = {this.state.currentIngredient.name}
-          quantity = {this.state.currentIngredient.quantity}
-          unit = {this.state.currentIngredient.unit}
-        >
-
-        </IngredientRow>
 
         <View style={globalStyles.RecipeView}>
           <TouchableOpacity style={globalStyles.helpLink}>
@@ -249,16 +264,12 @@ export default class RecipePage extends Component {
         <FlatList
           data={this.state.stepList}
           renderItem={({item}) => <StepRow 
-            name = {item}>
+            id = {item.id}
+            name = {item.name}
+            handleStepUpdate={this.handleStepUpdate}>
           </StepRow>}
           extraData={this.state}
         />
-
-        <StepRow
-          name={this.state.currentStep}
-          handleStepUpdate={this.handleStepUpdate}
-          >
-        </StepRow>
 
         <View style={globalStyles.RecipeView}>
           <TouchableOpacity style={globalStyles.helpLink}>
@@ -283,16 +294,12 @@ export default class RecipePage extends Component {
         <FlatList
           data={this.state.tagList}
           renderItem={({item}) => <StepRow 
-            name = {item}>
+            id = {item.id}
+            name = {item.name}
+            handleStepUpdate={this.handleTagUpdate}>
           </StepRow>}
           extraData={this.state}
         />
-
-        <StepRow
-          name={this.state.currentTag}
-          handleStepUpdate={this.handleTagUpdate}
-          >
-        </StepRow>
 
         <View style={globalStyles.RecipeView}>
           <TouchableOpacity style={globalStyles.helpLink}>

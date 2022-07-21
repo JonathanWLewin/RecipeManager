@@ -4,28 +4,41 @@ import { globalStyles } from './Styles';
 
 export default class Ingredient extends React.Component {
 
+  ingredientNameInput = (text) => {
+    this.props.handleIngredientNameInput(text, this.props.id);
+  }
+
+  ingredientQunatityInput = (text) => {
+    this.props.handleIngredientQuanitityInput(text, this.props.id);
+  }
+
+  ingredientUnitInput = (text) => {
+    this.props.handleIngredientMeasurementInput(text, this.props.id);
+  }
+
   render() {
+
     return (
         <View style={globalStyles.RecipeCentered}>
           <View style={globalStyles.RecipeView}>
             <TextInput
               style={styles.ingredientInput}
               value={this.props.name}
-              onChangeText={this.props.handleIngredientNameInput}
+              onChangeText={this.ingredientNameInput}
             />
           </View>
           <View style={globalStyles.RecipeView}>
             <TextInput
               style={styles.ingredientInput}
               value={this.props.quantity}
-              onChangeText={this.props.handleIngredientQuanitityInput}
+              onChangeText={this.ingredientQunatityInput}
             />
           </View>
           <View style={globalStyles.RecipeView}>
           <TextInput
             style={styles.ingredientInput}
             value={this.props.unit}
-            onChangeText={this.props.handleIngredientMeasurementInput}
+            onChangeText={this.ingredientUnitInput}
           />
           </View>
         </View>
