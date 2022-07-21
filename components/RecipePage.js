@@ -5,6 +5,8 @@ import StepRow from './StepRow';
 import { globalStyles } from './Styles';
 
 //Amplify
+import { DataStore } from 'aws-amplify';
+import { ingredient } from '../src/models';
 import { recipe } from '../src/models';
 
 export default class RecipePage extends Component {
@@ -128,11 +130,37 @@ export default class RecipePage extends Component {
     this.setState({currentTag: text})
   }
 
-  handleRecipeSubmit = () => {
-    if (this.state.recipeInput) {
-      this.setState({recipeTitle: this.state.recipeInput})
-    } else {
-      alert('Please enter a recipe title.')
+  async handleRecipeSubmit() {
+    try {
+      let ingredientList = [];
+      this.state.instructionsList.forEach(element => {
+        ingredientList.push(new ingredient({
+          name: element.name,
+          quantity: Number(element.quantity),
+          UOM: element.unit
+        }))
+      });
+
+      let recipeToSave = new recipe({
+        name: this.state.recipeTitle,
+        ingredients: ingredientList,
+        steps: this.state.stepList,
+        tags: this.state.tagList
+      })
+      console.log(recipeToSave);
+      await DataStore.save(recipeToSave);
+      console.log("recipe saved successfully!");
+    } catch (error) {
+      console.log("Error saving ingredient", error);
+    }
+  }
+
+  async ViewRecipe () {
+    try {
+      const recipes = await DataStore.query(recipe);
+      console.log("Recipes retrieved successfully!", JSON.stringify(recipes, null, 2));
+    } catch (error) {
+      console.log("Error retrieving recipes", error);
     }
   }
 
@@ -178,6 +206,7 @@ export default class RecipePage extends Component {
 
         <FlatList
           data={this.state.instructionsList}
+          keyExtractor={(item) => item.key}
           renderItem={({item}) => <IngredientRow 
             inputIngredient = {false}
             name = {item.name}
@@ -277,8 +306,17 @@ export default class RecipePage extends Component {
         <View style={globalStyles.RecipeView}>
           <TouchableOpacity style={globalStyles.helpLink}>
               <Text style={globalStyles.helpLinkText} 
-                onPress={this.handleRecipeTitleSubmit}>
+                onPress={() => this.handleRecipeSubmit()}>
                   Submit
+              </Text>
+            </TouchableOpacity>
+        </View>
+        <br></br><br></br>
+        <View style={globalStyles.RecipeView}>
+          <TouchableOpacity style={globalStyles.helpLink}>
+              <Text style={globalStyles.helpLinkText} 
+                onPress={() => this.ViewRecipe()}>
+                  View
               </Text>
             </TouchableOpacity>
         </View>
