@@ -12,7 +12,7 @@ type ingredient @model {
 type shoppingItem @model {
   id: ID!
   name: String!
-  quantit: Float!
+  quantity: Float!
   UOM: String
 }
 

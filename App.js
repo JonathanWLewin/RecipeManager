@@ -10,6 +10,7 @@ import RecipePage from './components/RecipePage';
 import SignUp from './components/SignUp';
 import ConfirmSignUp from './components/ConfirmSignUp';
 import ViewRecipesPage from './components/ViewRecipesPage';
+import ShoppingList from './components/ShoppingList';
 
 import { withAuthenticator } from 'aws-amplify-react-native'
 
@@ -36,6 +37,7 @@ export default function MyDrawer() {
         <Drawer.Screen name="Sign Up" component={SignUp} />
         <Drawer.Screen name="Confirm Sign Up" component={ConfirmSignUp} />
         <Drawer.Screen name="View Recipes" component={ViewRecipesPage} />
+        <Drawer.Screen name="Shopping List" component={ShoppingList} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
