@@ -13,12 +13,9 @@ import RecipeRow from './RecipeRow';
 
 export default class ViewRecipesPage extends Component {
 
-    state = {
-        recipeList: [{name: 'test'}]
-    }
-
     constructor(props) {
         super(props);
+        this.state = {recipeList: []}
         props.navigation.addListener('focus', () => {
             this.RefreshRecipes();
         })
@@ -28,7 +25,7 @@ export default class ViewRecipesPage extends Component {
         this.RefreshRecipes();
     }
 
-    RefreshRecipes() {
+    RefreshRecipes = () => {
         try {
             DataStore.query(recipe).then(response => {
                 this.setState({recipeList: response})
@@ -39,7 +36,7 @@ export default class ViewRecipesPage extends Component {
         }
     }
 
-    async DeleteItem(id) {
+    DeleteItem = async(id) => {
         await DataStore.delete(recipe, recipe => recipe.id("eq", id));
         this.RefreshRecipes();
     }

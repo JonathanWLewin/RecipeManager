@@ -318,16 +318,6 @@ export default class RecipePage extends Component {
               </Text>
             </TouchableOpacity>
         </View>
-        <br></br><br></br>
-        <View style={globalStyles.RecipeView}>
-          <TouchableOpacity style={globalStyles.helpLink}>
-              <Text style={globalStyles.helpLinkText} 
-                onPress={() => this.ViewRecipe()}>
-                  View
-              </Text>
-            </TouchableOpacity>
-        </View>
-
     </View>
     );
   }
